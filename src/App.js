@@ -4,6 +4,8 @@ import './App.css';
 import axios from 'axios';
 import JSONPretty from 'react-json-pretty';
 
+import Config from './Config'
+
 /*
    get token
    let res = await axios.post('https://smarthealth.service.moph.go.th/phps/public/api/v3/gettoken', {
@@ -19,7 +21,7 @@ class App extends Component {
 
 
   state = {
-    'token': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWhubm5AZ21haWwuY29tIiwiaWF0IjoxNTMzNzAwMTE0LCJleHAiOjE1MzM3NDc1OTl9.fS72iTl1GnMTlO8jHsEGcVRU6ulTzyye5lYOzaDp83I',
+    'token':Config.token,
     'pic': null,
     'person_data': null,
     'loading': false,
