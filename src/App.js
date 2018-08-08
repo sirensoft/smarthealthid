@@ -6,6 +6,8 @@ import JSONPretty from 'react-json-pretty';
 
 import Config from './Config'
 
+import { Button } from 'react-bootstrap';
+
 /*
    get token
    let res = await axios.post('https://smarthealth.service.moph.go.th/phps/public/api/v3/gettoken', {
@@ -21,7 +23,7 @@ class App extends Component {
 
 
   state = {
-    'token':Config.token,
+    'token': Config.token,
     'pic': null,
     'person_data': null,
     'loading': false,
@@ -87,9 +89,11 @@ class App extends Component {
 
         <h1 className="App-title">SmartHealthId สสจ.พิษณุโลก</h1>
         <div>กดปุ่มเมื่อไฟเครื่องอ่านหยุดกระพริบ</div>
-        <button onClick={this.generalClick} > ทั่วไป </button>
-        <button onClick={this.addressClick} > ที่อยู่ </button>
-        <button onClick={this.drugClick} > แพ้ยา </button>
+        <div style={{ padding: 10 }}>
+          <Button bsStyle="primary" bsSize="large" onClick={this.generalClick} > ทั่วไป </Button>
+          <Button bsStyle="success" bsSize="large" onClick={this.addressClick} > ที่อยู่ </Button>
+          <Button bsStyle="danger" bsSize="large" onClick={this.drugClick} > แพ้ยา </Button>
+        </div>
         <div style={{ marginTop: 10 }}>
           {!this.state.loading ? <div>
             <div>
