@@ -19,14 +19,13 @@ class App extends Component {
 
 
   state = {
-    'cid': '',
+    'token': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWhubm5AZ21haWwuY29tIiwiaWF0IjoxNTMzNzAwMTE0LCJleHAiOjE1MzM3NDc1OTl9.fS72iTl1GnMTlO8jHsEGcVRU6ulTzyye5lYOzaDp83I',
     'pic': null,
     'person_data': null,
     'loading': false,
     'apiGeneral': 'https://smarthealth.service.moph.go.th/phps/api/person/v2/findby/cid?cid=',
     'apiAddress': 'https://smarthealth.service.moph.go.th/phps/api/address/v1/find_by_cid?cid=',
     'apiDrug': 'https://smarthealth.service.moph.go.th/phps/api/drugallergy/v1/find_by_cid?cid=',
-    'token': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWhubm5AZ21haWwuY29tIiwiaWF0IjoxNTMzNzAwMTE0LCJleHAiOjE1MzM3NDc1OTl9.fS72iTl1GnMTlO8jHsEGcVRU6ulTzyye5lYOzaDp83I'
   }
 
   onChange = (e) => {
