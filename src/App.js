@@ -11,8 +11,8 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 /*
    get token
    let res = await axios.post('https://smarthealth.service.moph.go.th/phps/public/api/v3/gettoken', {
-     username: 'tehnnn@gmail.com',
-     password: 'qazwsxedcr112233'
+     username: 'xxxxx@gmail.com',
+     password: 'xxxxxxxxx'
    })
    this.setState({      
      token : res.data.jwt_token
