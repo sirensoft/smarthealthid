@@ -6,7 +6,7 @@ import JSONPretty from 'react-json-pretty';
 
 import Config from './Config'
 
-import { Button } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 /*
    get token
@@ -90,9 +90,11 @@ class App extends Component {
         <h1 className="App-title">SmartHealthId สสจ.พิษณุโลก</h1>
         <div>กดปุ่มเมื่อไฟเครื่องอ่านหยุดกระพริบ</div>
         <div style={{ padding: 10 }}>
-          <Button bsStyle="primary" bsSize="large" onClick={this.generalClick} > ทั่วไป </Button>
-          <Button bsStyle="success" bsSize="large" onClick={this.addressClick} > ที่อยู่ </Button>
-          <Button bsStyle="danger" bsSize="large" onClick={this.drugClick} > แพ้ยา </Button>
+          <ButtonGroup>
+            <Button bsStyle="primary" bsSize="large" onClick={this.generalClick} > ทั่วไป </Button>
+            <Button bsStyle="success" bsSize="large" onClick={this.addressClick} > ที่อยู่ </Button>
+            <Button bsStyle="danger" bsSize="large" onClick={this.drugClick} > แพ้ยา </Button>
+          </ButtonGroup>
         </div>
         <div style={{ marginTop: 10 }}>
           {!this.state.loading ? <div>
