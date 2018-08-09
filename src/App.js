@@ -32,7 +32,8 @@ class App extends Component {
     'apiGeneral': 'https://smarthealth.service.moph.go.th/phps/api/person/v2/findby/cid?cid=',
     'apiAddress': 'https://smarthealth.service.moph.go.th/phps/api/address/v1/find_by_cid?cid=',
     'apiDrug': 'https://smarthealth.service.moph.go.th/phps/api/drugallergy/v1/find_by_cid?cid=',
-    'apiLink1': 'https://smarthealth.service.moph.go.th/phps/api/00031/009/01'
+    'apiLink1': 'https://smarthealth.service.moph.go.th/phps/api/00031/009/01',
+    'apiLink2': 'https://smarthealth.service.moph.go.th/phps/api/00265/004/02'
   }
 
   onChange = (e) => {
@@ -152,7 +153,7 @@ class App extends Component {
           </ButtonGroup>
           <div style={{ marginTop: 25 }}>
             <form onSubmit={this.onSubmit}>
-              <input onChange={this.onChange} value={this.state.cid} placeholder={'ค้นด้วย 13 หลัก'} /><button type='submit'>ค้นหา</button>
+              
             </form>
           </div>
         </div>
