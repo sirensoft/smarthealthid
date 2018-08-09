@@ -32,6 +32,7 @@ class App extends Component {
     'apiGeneral': 'https://smarthealth.service.moph.go.th/phps/api/person/v2/findby/cid?cid=',
     'apiAddress': 'https://smarthealth.service.moph.go.th/phps/api/address/v1/find_by_cid?cid=',
     'apiDrug': 'https://smarthealth.service.moph.go.th/phps/api/drugallergy/v1/find_by_cid?cid=',
+    'apiLink1': 'https://smarthealth.service.moph.go.th/phps/api/00031/009/01'
   }
 
   onChange = (e) => {
@@ -92,8 +93,8 @@ class App extends Component {
       pic: null
     })
 
-    setTimeout(()=>{
-      
+    setTimeout(() => {
+
     })
 
     let raw = await axios.get(api + this.state.cid, {
@@ -121,6 +122,21 @@ class App extends Component {
     this.process(this.state.apiDrug)
   }
 
+  linkAge1 = async () => {
+    let resp = await axios.post(this.state.apiLink1,this.state.cid, {
+      headers: {
+        'jwt-token': this.state.token
+      },
+    });
+    console.log(JSON.stringify(resp.data))
+    if(resp.data.data){
+      this.setState({
+        person_data:resp.data.data.return
+      })
+    }
+    
+  }
+
   render() {
     return (
       <div className="App">
@@ -132,6 +148,7 @@ class App extends Component {
             <Button bsStyle="primary" bsSize="large" onClick={this.generalClick} > ทั่วไป </Button>
             <Button bsStyle="success" bsSize="large" onClick={this.addressClick} > ที่อยู่ </Button>
             <Button bsStyle="danger" bsSize="large" onClick={this.drugClick} > แพ้ยา </Button>
+            <Button bsSize='large' onClick={this.linkAge1}>linkage-1</Button>
           </ButtonGroup>
           <div style={{ marginTop: 25 }}>
             <form onSubmit={this.onSubmit}>
