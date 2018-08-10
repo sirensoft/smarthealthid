@@ -136,9 +136,15 @@ class App extends Component {
   }
 
   linkAge = async (api) => {
+    if(!this.state.cid){
+      alert('กรุณาเสียบบัตร และกดปุ่ม เรียกบัตรใหม่ อีกครั้ง')
+      return;
+    }
     this.setState({
       loading: true
     })
+
+    
 
     let resp = await axios.post(api, this.state.cid, {
       headers: {
