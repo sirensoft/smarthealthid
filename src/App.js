@@ -33,8 +33,11 @@ class App extends Component {
       'apiGeneral': 'https://smarthealth.service.moph.go.th/phps/api/person/v2/findby/cid?cid=',
       'apiAddress': 'https://smarthealth.service.moph.go.th/phps/api/address/v1/find_by_cid?cid=',
       'apiDrug': 'https://smarthealth.service.moph.go.th/phps/api/drugallergy/v1/find_by_cid?cid=',
-      'apiLink1': 'https://smarthealth.service.moph.go.th/phps/api/00031/009/01',
-      'apiLink2': 'https://smarthealth.service.moph.go.th/phps/api/00265/004/02'
+
+      'apiLinkNhso': 'https://smarthealth.service.moph.go.th/phps/api/00031/009/01', //สิทธิรักษา
+      'apiLinkPerson': 'https://smarthealth.service.moph.go.th/phps/api/00023/001/01', //ทะเบียนราษ
+      'apiLinkHome': 'https://smarthealth.service.moph.go.th/phps/api/00023/008/01', //ทะเบียนบ้าน
+      'apiLinkAddress': 'https://smarthealth.service.moph.go.th/phps/api/00023/027/01', //ที่อยู่
     }
 
 
@@ -166,15 +169,16 @@ class App extends Component {
         <div>กดปุ่มเมื่อไฟเครื่องอ่านหยุดกระพริบ</div>
         <div style={{ padding: 10 }}>
           <ButtonGroup>
-            <Button bsStyle="primary" bsSize="large" onClick={this.generalClick} > ทั่วไป </Button>
-            <Button bsStyle="success" bsSize="large" onClick={this.addressClick} > ที่อยู่ </Button>
-            <Button bsStyle="danger" bsSize="large" onClick={this.drugClick} > แพ้ยา </Button>
+            <Button bsSize="large" onClick={this.generalClick} >Moph-ทั่วไป </Button>
+            <Button bsSize="large" onClick={this.addressClick} > Moph-ที่อยู่ </Button>
+            <Button bsSize="large" onClick={this.drugClick} > Moph-แพ้ยา </Button>
+
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkNhso)}>Link-สิทธิรักษา</Button>
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkPerson)}>Link-ทะเบียนราษ</Button>
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkHome)}>Link-ทะเบียนบ้าน</Button>
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkAddress)}>Link-ที่อยู่</Button>
           </ButtonGroup>
-          <p>
-            <ButtonGroup>
-              <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLink1)}>Linkage</Button>
-            </ButtonGroup>
-          </p>
+
           <div style={{ marginTop: 5 }}>
             <form onSubmit={this.onSubmit}>
 
