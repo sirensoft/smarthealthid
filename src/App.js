@@ -42,12 +42,8 @@ class App extends Component {
 
 
   }
-  async componentDidMount() {
-    let resp = await axios.get('http://localhost:8084/smartcard/data/');
-    this.setState({
-      cid: resp.data.cid,
-      pic: 'http://localhost:8084/smartcard/picture/?h=' + Math.random()
-    })
+  componentDidMount() {
+
   }
 
 
@@ -160,14 +156,25 @@ class App extends Component {
 
   }
 
+  reload = async () => {
+    let resp = await axios.get('http://localhost:8084/smartcard/data/');
+    this.setState({
+      cid: resp.data.cid,
+      pic: 'http://localhost:8084/smartcard/picture/?h=' + Math.random()
+    })
+  }
+
 
   render() {
+
     return (
       <div className="App">
 
         <h1 className="App-title">ระบบตรวจสอบข้อมูลรายบุคคล (SmartHealthId)  สสจ.พิษณุโลก</h1>
-        <div>กดปุ่มเมื่อไฟเครื่องอ่านหยุดกระพริบ</div>
+
         <div style={{ padding: 10 }}>
+          <Button bsStyle='success' onClick={this.reload}>เรียกบัตรใหม่</Button>
+          <br />
           <ButtonGroup>
             <Button bsSize="large" onClick={this.generalClick} >Moph-ทั่วไป </Button>
             <Button bsSize="large" onClick={this.addressClick} > Moph-ที่อยู่ </Button>
@@ -178,12 +185,8 @@ class App extends Component {
             <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkHome)}>Dopa-ทะเบียนบ้าน</Button>
             <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkAddress)}>Dopa-ที่อยู่</Button>
           </ButtonGroup>
+          <div>กดปุ่มเมื่อไฟเครื่องอ่านหยุดกระพริบ</div>
 
-          <div style={{ marginTop: 5 }}>
-            <form onSubmit={this.onSubmit}>
-
-            </form>
-          </div>
         </div>
         <div style={{ marginTop: 10 }}>
           {!this.state.loading ? <div>
