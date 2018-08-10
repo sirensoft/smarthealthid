@@ -160,7 +160,8 @@ class App extends Component {
     let resp = await axios.get('http://localhost:8084/smartcard/data/');
     this.setState({
       cid: resp.data.cid,
-      pic: 'http://localhost:8084/smartcard/picture/?h=' + Math.random()
+      pic: 'http://localhost:8084/smartcard/picture/?h=' + Math.random(),
+      person_data: {}
     })
   }
 
