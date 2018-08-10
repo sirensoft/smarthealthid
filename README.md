@@ -3,4 +3,4 @@
 -cd smarthealth & npm install <br/>
 -npm start <br/>
 
-![image]('./ss.png')
+![image](ss.png)
