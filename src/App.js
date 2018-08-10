@@ -23,18 +23,31 @@ import loadgif from './load.gif'
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      'token': Config.token,
+      'pic': null,
+      'person_data': {},
+      'loading': false,
+      'apiGeneral': 'https://smarthealth.service.moph.go.th/phps/api/person/v2/findby/cid?cid=',
+      'apiAddress': 'https://smarthealth.service.moph.go.th/phps/api/address/v1/find_by_cid?cid=',
+      'apiDrug': 'https://smarthealth.service.moph.go.th/phps/api/drugallergy/v1/find_by_cid?cid=',
+      'apiLink1': 'https://smarthealth.service.moph.go.th/phps/api/00031/009/01',
+      'apiLink2': 'https://smarthealth.service.moph.go.th/phps/api/00265/004/02'
+    }
 
-  state = {
-    'token': Config.token,
-    'pic': null,
-    'person_data': {},
-    'loading': false,
-    'apiGeneral': 'https://smarthealth.service.moph.go.th/phps/api/person/v2/findby/cid?cid=',
-    'apiAddress': 'https://smarthealth.service.moph.go.th/phps/api/address/v1/find_by_cid?cid=',
-    'apiDrug': 'https://smarthealth.service.moph.go.th/phps/api/drugallergy/v1/find_by_cid?cid=',
-    'apiLink1': 'https://smarthealth.service.moph.go.th/phps/api/00031/009/01',
-    'apiLink2': 'https://smarthealth.service.moph.go.th/phps/api/00265/004/02'
+
   }
+  async componentDidMount() {
+    let resp = await axios.get('http://localhost:8084/smartcard/data/');
+    this.setState({
+      cid: resp.data.cid,
+      pic: 'http://localhost:8084/smartcard/picture/?h=' + Math.random()
+    })
+  }
+
+
 
   onChange = (e) => {
     this.setState({
@@ -55,7 +68,7 @@ class App extends Component {
     try {
       resp = await axios.get('http://localhost:8084/smartcard/data/')
     } catch (error) {
-      console.log(error)
+      console.log('err', error)
       return;
     }
 
@@ -123,20 +136,27 @@ class App extends Component {
     this.process(this.state.apiDrug)
   }
 
-  linkAge1 = async () => {
-    let resp = await axios.post(this.state.apiLink1,this.state.cid, {
+  linkAge = async (api) => {
+    this.setState({
+      loading: true
+    })
+
+    let resp = await axios.post(api, this.state.cid, {
       headers: {
         'jwt-token': this.state.token
       },
     });
-    console.log(JSON.stringify(resp.data))
-    if(resp.data.data){
+    console.log('link', JSON.stringify(resp.data))
+
+    if (resp.data) {
       this.setState({
-        person_data:resp.data.data.return
+        person_data: resp.data,
+        loading: false
       })
     }
-    
+
   }
+
 
   render() {
     return (
@@ -149,11 +169,15 @@ class App extends Component {
             <Button bsStyle="primary" bsSize="large" onClick={this.generalClick} > ทั่วไป </Button>
             <Button bsStyle="success" bsSize="large" onClick={this.addressClick} > ที่อยู่ </Button>
             <Button bsStyle="danger" bsSize="large" onClick={this.drugClick} > แพ้ยา </Button>
-            <Button bsSize='large' onClick={this.linkAge1}>linkage-1</Button>
           </ButtonGroup>
-          <div style={{ marginTop: 25 }}>
+          <p>
+            <ButtonGroup>
+              <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLink1)}>Linkage</Button>
+            </ButtonGroup>
+          </p>
+          <div style={{ marginTop: 5 }}>
             <form onSubmit={this.onSubmit}>
-              
+
             </form>
           </div>
         </div>
