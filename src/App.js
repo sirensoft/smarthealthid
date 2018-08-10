@@ -165,7 +165,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <h1 className="App-title">SmartHealthId สสจ.พิษณุโลก</h1>
+        <h1 className="App-title">ระบบตรวจสอบข้อมูลรายบุคคล (SmartHealthId)  สสจ.พิษณุโลก</h1>
         <div>กดปุ่มเมื่อไฟเครื่องอ่านหยุดกระพริบ</div>
         <div style={{ padding: 10 }}>
           <ButtonGroup>
@@ -173,10 +173,10 @@ class App extends Component {
             <Button bsSize="large" onClick={this.addressClick} > Moph-ที่อยู่ </Button>
             <Button bsSize="large" onClick={this.drugClick} > Moph-แพ้ยา </Button>
 
-            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkNhso)}>Link-สิทธิรักษา</Button>
-            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkPerson)}>Link-ทะเบียนราษ</Button>
-            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkHome)}>Link-ทะเบียนบ้าน</Button>
-            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkAddress)}>Link-ที่อยู่</Button>
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkNhso)}>Dopa-สิทธิรักษา</Button>
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkPerson)}>Dopa-ทะเบียนราษ</Button>
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkHome)}>Dopa-ทะเบียนบ้าน</Button>
+            <Button bsSize='large' onClick={() => this.linkAge(this.state.apiLinkAddress)}>Dopa-ที่อยู่</Button>
           </ButtonGroup>
 
           <div style={{ marginTop: 5 }}>
